@@ -15,9 +15,9 @@ end
 local IS_Settings = {
 	["Version"] = "1.3.6",
 	["Invite"] = "dv96SXYmxz",
-	["Plugins"] = LoadUrl("https://cdn.jsdelivr.net/gh/Infinite-Store/Infinite-Store@main/sources.luau"),
+	["Plugins"] = LoadUrl("https://cdn.jsdelivr.net/gh/vaxtalastus-web/Infinite-Store-Reborn@main/sources.luau"),
 	["NsfwPlugins"] = LoadUrl(
-		"https://cdn.jsdelivr.net/gh/Infinite-Store/Infinite-Store@main/plugins/nsfwplugins/sources.luau"
+		"https://cdn.jsdelivr.net/gh/vaxtalastus-web/Infinite-Store-Reborn@main/plugins/nsfwplugins/sources.luau"
 	),
 }
 
