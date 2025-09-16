@@ -22,7 +22,7 @@ local IS_Settings = {
 	),
 }
 
-local ann = "THIS IS NOW ARCHIVED AND IS DEAD, join the official IS  VwCGhNu9Rb"
+local ann = "reborn - barbarianTopG"
 local _UserSettings = {
 	["StartMinimized"] = false,
 	["SafeMode"] = false,
