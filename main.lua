@@ -9,10 +9,9 @@ local LoadUrl = function(str)
 	return loadstring(game:HttpGet(str, true))()
 end
 if not IY_LOADED then
-	LoadUrl("https://cdn.jsdelivr.net/gh/EdgeIY/infiniteyield@master/source")
-	wait(0.75)
+	LoadUrl("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source")
+	task.wait(0.75)
 end
-
 local IS_Settings = {
 	["Version"] = "1.3.6",
 	["Invite"] = "dv96SXYmxz",
@@ -43,7 +42,7 @@ local NoSaving = false
 local write_cooldown = false
 local writefileCooldown
 writefileCooldown = function(name, data)
-	spawn(function()
+	task.spawn(function()
 		if not write_cooldown then
 			write_cooldown = true
 			writefile(name, data)
@@ -238,12 +237,12 @@ if ann ~= "" and _UserSettings.Announcement ~= ann then
 	ExitImage.Size = UDim2.new(0, 10, 0, 10)
 	ExitImage.Image = "rbxassetid://5054663650"
 	ExitImage.ZIndex = 10
-	spawn(function()
-		wait(0.3)
+	task.spawn(function()
+		task.wait(0.3)
 		AnnGUI:TweenPosition(UDim2.new(0.5, -180, 0, 10), "InOut", "Quart", 0.5, true, nil)
 		Exit.MouseButton1Click:Connect(function()
 			AnnGUI:TweenPosition(UDim2.new(0.5, -180, 0, -500), "InOut", "Quart", 0.5, true, nil)
-			wait(0.6)
+			task.wait(0.6)
 			AnnGUI:Destroy()
 		end)
 	end)
@@ -389,7 +388,6 @@ local Name3 = Instance.new("TextLabel")
 local List = Instance.new("Frame")
 local List1 = Instance.new("TextLabel")
 local List2 = Instance.new("TextLabel")
-local List3 = Instance.new("TextLabel")
 local List4 = Instance.new("TextLabel")
 local Plugins = Instance.new("Frame")
 local TopBarExample = Instance.new("Frame")
@@ -428,7 +426,6 @@ local Plugins_2 = Instance.new("TextButton")
 local cs_2 = Instance.new("BoolValue")
 local Settings_2 = Instance.new("TextButton")
 local cs_3 = Instance.new("BoolValue")
-local DiscordInvite = Instance.new("TextLabel")
 local PluginInfo = Instance.new("Frame")
 local PluginInfo_2 = Instance.new("Frame")
 local InfoLabel = Instance.new("TextLabel")
@@ -708,23 +705,6 @@ List2.TextSize = 15.000
 List2.TextTransparency = 1.000
 List2.TextWrapped = true
 List2.TextXAlignment = Enum.TextXAlignment.Left
-List3.Name = "List3"
-List3.Parent = List
-List3.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-List3.BackgroundTransparency = 1.000
-List3.BorderColor3 = Color3.fromRGB(1, 12, 53)
-List3.BorderSizePixel = 0
-List3.Position = UDim2.new(0.051282052, 0, 0.292258769, 0)
-List3.Size = UDim2.new(1, 0, 0.148745388, 0)
-List3.ZIndex = 100
-List3.Font = Enum.Font.Gotham
-List3.RichText = true
-List3.Text = "• Very *<b>In</b>*active Discord Server"
-List3.TextColor3 = Color3.fromRGB(206, 206, 206)
-List3.TextSize = 15.000
-List3.TextTransparency = 1.000
-List3.TextWrapped = true
-List3.TextXAlignment = Enum.TextXAlignment.Left
 List4.Name = "List4"
 List4.Parent = List
 List4.BackgroundColor3 = Color3.fromRGB(7, 42, 38)
@@ -1053,19 +1033,6 @@ Settings_2.TextSize = 20.000
 Settings_2.TextXAlignment = Enum.TextXAlignment.Left
 cs_3.Name = "cs"
 cs_3.Parent = Settings_2
-DiscordInvite.Name = "DiscordInvite"
-DiscordInvite.Parent = SideBar
-DiscordInvite.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-DiscordInvite.BackgroundTransparency = 1.000
-DiscordInvite.BorderSizePixel = 0
-DiscordInvite.Position = UDim2.new(-0.0270000007, 0, 0.964999974, 0)
-DiscordInvite.Size = UDim2.new(1.05128217, 0, 0.0294661485, 0)
-DiscordInvite.ZIndex = 100
-DiscordInvite.Font = Enum.Font.Gotham
-DiscordInvite.Text = ".gg/infinitestore"
-DiscordInvite.TextColor3 = Color3.fromRGB(255, 255, 255)
-DiscordInvite.TextSize = 9.000
-DiscordInvite.TextWrapped = true
 PluginInfo.Name = "PluginInfo"
 PluginInfo.Parent = mainFrame
 PluginInfo.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
@@ -1140,7 +1107,6 @@ mainFrame.TopBar.Close.MouseButton1Click:Connect(function()
 	mainFrame:TweenPosition(UDim2.new(0.5, -250, 0, -500), "InOut", "Quart", 0.5, true, nil)
 end)
 mainFrame.TopBar.Title.Text = ("Infinite Store v" .. IS_Settings["Version"])
-DiscordInvite.Text = (".gg/" .. IS_Settings["Invite"])
 autoCanvas(List_2, UIGridLayout)
 autoCanvas(List_3, UIGridLayout_3)
 autoCanvas(mainFrame.PluginInfo.List, mainFrame.PluginInfo.List.UIGridLayout)
@@ -1211,8 +1177,6 @@ if _UserSettings.SkipIntro == true then
 	tween:Play()
 	local tweenGoals = { TextTransparency = 0, Position = UDim2.new(0, 0, 0.292, 0) }
 	local tweenInfo = TweenInfo.new(0.01, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
-	local tween = TweenService:Create(mainFrame.ListHolder.Home.List.List3, tweenInfo, tweenGoals)
-	tween:Play()
 	local tweenGoals = { TextTransparency = 0, Position = UDim2.new(0, 0, 0.439, 0) }
 	local tweenInfo = TweenInfo.new(0.01, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.List.List4, tweenInfo, tweenGoals)
@@ -1222,7 +1186,7 @@ else
 	local tweenInfo = TweenInfo.new(0.7, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.Welcome, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(0.6)
+	task.wait(0.6)
 	local tweenGoals = { Position = UDim2.new(0.245, 0, -0.05, 0) }
 	local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.cart, tweenInfo, tweenGoals)
@@ -1231,17 +1195,17 @@ else
 	local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.text, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(1.1)
+	task.wait(1.1)
 	local tweenGoals = { Position = UDim2.new(0.026, 0, 0.5, 0) }
 	local tweenInfo = TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.Epik, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(0.69420)
+	task.wait(0.69420)
 	local tweenGoals = { Position = UDim2.new(0.296, 0, 0.5, 0) }
 	local tweenInfo = TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.Devs, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(0.9)
+	task.wait(0.9)
 	local tweenGoals = { Position = UDim2.new(-0.07, 0, -0.05, 0) }
 	local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.text, tweenInfo, tweenGoals)
@@ -1252,22 +1216,20 @@ else
 	local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.Welcome, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(0.8)
+	task.wait(0.8)
 	local tweenGoals = { TextTransparency = 0, Position = UDim2.new(0, 0, -0.001, 0) }
 	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.List.List1, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(0.4)
+	task.wait(0.4)
 	local tweenGoals = { TextTransparency = 0, Position = UDim2.new(0, 0, 0.146, 0) }
 	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.List.List2, tweenInfo, tweenGoals)
 	tween:Play()
-	wait(0.4)
+	task.wait(0.4)
 	local tweenGoals = { TextTransparency = 0, Position = UDim2.new(0, 0, 0.292, 0) }
 	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
-	local tween = TweenService:Create(mainFrame.ListHolder.Home.List.List3, tweenInfo, tweenGoals)
-	tween:Play()
-	wait(0.4)
+	task.wait(0.4)
 	local tweenGoals = { TextTransparency = 0, Position = UDim2.new(0, 0, 0.439, 0) }
 	local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
 	local tween = TweenService:Create(mainFrame.ListHolder.Home.List.List4, tweenInfo, tweenGoals)
@@ -1392,7 +1354,7 @@ for i, v in pairs(mainFrame.SideBar.Holder:GetChildren()) do
 				tween:Play()
 				tweenColor2(v, openColor, 0.2)
 			end
-			wait(1)
+			task.wait(1)
 			tweeningDebounce = false
 		end)
 	end
@@ -1427,7 +1389,7 @@ local LoadPluginsFromTable = function(ptbl)
 					deletePlugin(plgin.Name)
 					delfile(plgin.Name .. ".iy")
 					pluginFrameClone.Install.Text = "Success"
-					wait(0.5)
+					task.wait(0.5)
 					pluginFrameClone.Install.Text = "Install"
 					for i, v in pairs(pluginFrameClone:GetChildren()) do
 						tweenColor3(pluginFrameClone, Color3.fromRGB(22, 22, 22), 0.2)
@@ -1437,13 +1399,13 @@ local LoadPluginsFromTable = function(ptbl)
 					end
 				else
 					pluginFrameClone.Install.Text = "Installing"
-					spawn(function()
+					task.spawn(function()
 						writefile(plgin.Name .. ".iy", pluginData)
-						wait()
+						task.wait()
 						addPlugin(plgin.Name)
 					end)
 					pluginFrameClone.Install.Text = "Success"
-					wait(0.5)
+					task.wait(0.5)
 					pluginFrameClone.Install.Text = "Uninstall"
 					for i, v in pairs(pluginFrameClone:GetChildren()) do
 						tweenColor3(pluginFrameClone, Color3.fromRGB(3, 31, 6), 0.2)
@@ -1457,7 +1419,7 @@ local LoadPluginsFromTable = function(ptbl)
 		end)
 		pluginFrameClone.PluginName.InfoBtn.MouseButton1Click:Connect(function()
 			if pluginFrameClone.PluginName.InfoBtn.ImageColor3 ~= Color3.fromRGB(255, 255, 255) then
-				spawn(function()
+				task.spawn(function()
 					if plgin["Description"] ~= nil then
 						if _UserSettings["NoNotifications"] == false then
 							notify(
@@ -1585,7 +1547,7 @@ for index, setting in pairs(guiSettings) do
 	tempClone.SettingName.Text = tostring(setting["Name"])
 	tempClone.Description.Text = tostring(setting["Description"])
 	tempClone.CheckBox.Btn.MouseButton1Click:Connect(function()
-		spawn(function()
+		task.spawn(function()
 			setting.Function()
 		end)
 	end)
